@@ -10,7 +10,7 @@ router.post('/beer',(req,res,next)=>{
         detail:req.body.detail,
         image:req.body.image
     }).then((callbacks)=>{
-        res.json( {status:"Beer Added successfully",callback:callbacks});
+        res.json( {status:"Beer successfully Added",callback:callbacks});
         console.log(callbacks);
     }).catch(next);
 
