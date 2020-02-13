@@ -24,7 +24,7 @@ app.use(express.static('public'));
 
 mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
     .then((db) => {
-        console.log("Successfully connected to MongodB server");
+        console.log("Successfully connected to MongodB server...");
     }, (err) => console.log(err));
 
 app.use('/users', userRouter);
