@@ -11,6 +11,7 @@ const itemsRouter = require('./routes/items');
 const WineRoute = require('./routes/Wines');
 const BeerRoute = require('./routes/Beers');
 const drinkRoute = require('./routes/HardDrinks');
+const updateRoute = require('./routes/updates');
 const router = express.Router();
 
 
@@ -33,6 +34,7 @@ app.use('/item',itemsRouter);
 app.use('/Wine',WineRoute);
 app.use('/Beer',BeerRoute);
 app.use('/harddrink',drinkRoute);
+app.use('/update',updateRoute);
 app.use('/banner',bannerImages);
 app.use(auth.verifyUser);
 
