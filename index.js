@@ -25,7 +25,7 @@ app.use(express.static('public'));
 
 mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
     .then((db) => {
-        console.log("Successfully connected to MongodB server...");
+        console.log("Successfully connected to MongodB server");
     }, (err) => console.log(err));
 
 app.use('/users', userRouter);
@@ -36,6 +36,7 @@ app.use('/Beer',BeerRoute);
 app.use('/harddrink',drinkRoute);
 app.use('/update',updateRoute);
 app.use('/banner',bannerImages);
+
 app.use(auth.verifyUser);
 
 
