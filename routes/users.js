@@ -49,6 +49,13 @@ router.post('/login', (req, res, next) => {
         }).catch(next);
 })
 
+router.get('/all',(req,res,next)=>{
+    User.find({})
+    .then((callbacks)=>{
+        res.json(callbacks);
+    }).catch(next)
+ });
+
 router.get('/me', auth.verifyUser, (req, res, next) => {
     res.json({ _id: req.user._id, firstName: req.user.firstName, lastName: req.user.lastName, username: req.user.username, image: req.user.image });
 });
@@ -59,8 +66,15 @@ router.put('/me', auth.verifyUser, (req, res, next) => {
             res.json({ _id: user._id, firstName: req.user.firstName, lastName: req.user.lastName, username: user.username, image: user.image });
         }).catch(next);
 });
-router.get('/meimage', auth.verifyUser, (req, res,next)=>{
-    res.json({_id: req.user._id,image: req.user.image});
+
+router.put('/update/id',function(req,res){
+    User.findOneAndUpdate({_id :req.params.id},req.body).then(function(){
+        res.send("updated")
+    }).catch(function(e){
+        res.send(e)
+  
+       
+    })
 })
 
 module.exports = router;
